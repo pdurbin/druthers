@@ -1,0 +1,41 @@
+#!/usr/bin/env python
+from optparse import OptionParser
+import sys
+import csv
+import operator
+# input file (votes.tsv) generated with:
+# for i in {1..100}; do echo $i; done | $GNU_SORT -R | head -n 20 > 1
+# paste 1 2 3 4 5 6 7 8 9 10 > votes
+
+parser = OptionParser(usage='usage: %prog [options] file')
+parser.add_option('-o', '--ordered', help='The votes are in order so give them "points" based on a cutoff of 20.', dest = 'ordered', default = False, action = 'store_true')
+opts, args = parser.parse_args()
+
+if args:
+    file = open(args[0])
+else:
+    file = sys.stdin
+
+cutoff = 20
+data = {}
+for row in csv.reader(file, delimiter='\t'):
+    for i in row:
+        if opts.ordered:
+            data[i] = data.get(i, 0) + cutoff
+        else:
+            data[i] = data.get(i, 0) + 1
+    cutoff -= 1
+    if cutoff == 0:
+        break
+
+sorted_data = sorted(data.items(), key=operator.itemgetter(1), reverse = True)
+if opts.ordered:
+    type = 'point'
+else:
+    type = 'vote'
+for i in sorted_data:
+    if i[1] == 1:
+        maybe_s = ''
+    else:
+        maybe_s = 's'
+    print i[1], type + maybe_s, "for issue", i[0]
