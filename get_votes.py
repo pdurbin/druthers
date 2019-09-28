@@ -17,13 +17,12 @@ from urllib.parse import urlparse
 def main():
     token = config.api_token
     tsv_file = 'boards.tsv'
+    cache_dir = 'cache'
     #print(tsv_file)
     #print(token)
     #exit()
-    final = {}
-    bar = {}
+    titles_by_issue = {}
     alldata = []
-    cache_dir = 'cache'
     with open(tsv_file) as tsvfile:
         reader = csv.DictReader(tsvfile, delimiter="\t")
         rows = [row for row in reader]
@@ -36,6 +35,8 @@ def main():
             print(project_id)
             print(board)
             hostname = row['Installation hostname']
+            if hostname == 'dataverse.harvard.edu':
+                continue
             print(hostname)
             #if board:
             #    print(board)
@@ -98,7 +99,8 @@ def main():
                     issue_url = None
                     #datarow.append('issue42')
                     #break
-                    if content_url:
+                    archived = card['archived']
+                    if content_url and not archived:
                         #print(content_url)
                         #print(content_url)
                         #print(content_url)
@@ -112,6 +114,22 @@ def main():
                         datarow.append(hostname)
                         datarow.append(board)
                         datarow.append(column_name)
+                        #title = None
+                        title = titles_by_issue.get(issue_url, None)
+                        #if titles_by_issue[issue_url]:
+                        #    title = titles_by_issue[issue_url]
+                        if not title:
+                            #api_issue_url = GET /repos/:owner/:repo/issues/:issue_number
+                            api_issue_url = 'https://api.github.com/repos/' + issue_org + '/' + issue_repo + '/issues/' + issue_number
+                            print('fetching ' + api_issue_url)
+                            req = Request(api_issue_url)
+                            #req.add_header('Accept', 'application/vnd.github.inertia-preview+json')
+                            req.add_header('Authorization', 'token ' + token)
+                            response = urlopen(req)
+                            issue_out = get_remote_json(response)
+                            titles_by_issue[issue_url] = issue_out['title']
+                            title = titles_by_issue[issue_url]
+                        datarow.append(title)
                         alldata.append(datarow)
             #break
             #cards_out = '[]'
@@ -123,7 +141,9 @@ def main():
     #print(json.dumps(alldata, indent=4))
     outfile = open('votes.tsv','w')
     writer=csv.writer(outfile, delimiter='\t')
-    writer.writerow(['Issue URL', 'Installation hostname', 'Board URL', 'Collumn name'])
+    #writer.writerow(['SNo', 'States', 'Dist', 'Population'])
+    #writer.writerow(['filename', 'dataset_name', 'dataverse_level_1_alias', 'dataverse_level_1_friendly', 'dataverse_level_2_alias', 'dataverse_level_2_friendly', 'dataverse_level_3_alias', 'dataverse_level_3_friendly', 'subjects', 'publication_date'])
+    writer.writerow(['Issue URL', 'Installation hostname', 'Board URL', 'Board Column', 'Issue title'])
     #writer.writerows(list_of_rows)
     writer.writerows(alldata)
 
