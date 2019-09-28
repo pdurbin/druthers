@@ -1,0 +1,49 @@
+Installation hostname	Country	Continent	DOI authority	GDCC member	Launch year	Project board under IQSS	Project board API URL	Fork URL	About URL	custom guide url	Blog Post
+dvn.library.ubc.ca	Canada	North America	␕	no				∅	not configurable		
+dataverse.ada.edu.au	Australia	Australia	10.26193	yes	2017	https://github.com/orgs/IQSS/projects/17	https://api.github.com/projects/3269970	∅	https://ada.edu.au	none	
+data.aussda.at	Austria	Europe	10.11587	no				∅	http://aussda.at	none	
+dataverse.bhp.org.bw	Botswana	Africa	∅	no				∅		none	
+catalogues.cdsp.sciences-po.fr	France	Europe	10.2141	no		https://github.com/orgs/IQSS/projects/12	https://api.github.com/projects/3003605	∅	not configured	none	
+data.cifor.org	Indonesia	Asia	10.17528	no				∅	not configured	none	
+data.cimmyt.org	Mexico	North America	␕	no				https://github.com/CIMMYT/Research-Data-Repository	not configured	none	
+dataverse.cirad.fr	France	Europe	10.18167	no				NA	not configured	https://dataverse.cirad.fr/guide/guide.html	
+dataverse.library.dal.ca	Canada	North America	10.23685	no				NA	not configured	none	
+data.inra.fr	France	Europe	10.15454	no		https://github.com/orgs/IQSS/projects/15	https://api.github.com/projects/3204254	NA		https://www6.inra.fr/datapartage/Zoom-sur/Portail-Data-Inra-nouvelle-version	
+dataverse.ird.fr	France	Europe	10.23708	no							
+dataspace.ust.hk	Hong Kong	Asia	10.14711	no				?	not configurable	https://dataspace.ust.hk/ds/service/about	
+edatos.consorciomadrono.es	Spain	Europe	10.2195	yes				?	not configured	none	
+dataverse.nl	Netherlands	Europe	␕	yes				https://github.com/DANS-KNAW/dataverse/tree/dans-master	https://dans.knaw.nl/en/about/services/archiving-and-reusing-data/DataverseNL/about?set_language=en	https://dans.knaw.nl/en/about/services/DataverseNL/dataversenl-faq	
+dataverse.no	Norway	Europe	10.1871	yes		https://github.com/orgs/IQSS/projects/14	https://api.github.com/projects/3127472	NA	http://site.uit.no/dataverseno/deposit/	https://site.uit.no/dataverseno/deposit/	
+researchdata.ntu.edu.sg	Singapore	Asia	10.21979	yes				NA	https://blogs.ntu.edu.sg/lib-datamanagement/about-dr-ntu-data/	https://blogs.ntu.edu.sg/lib-datamanagement/dr-ntu-data-user-guides/	
+dvn.fudan.edu.cn	China	Asia	∅	yes				https://dvn.fudan.edu.cn/home/	not configurable	none	https://dataverse.org/blog/featured-dataverse-repository-fudan-university
+data.gro.uni-goettingen.de	Germany	Europe	10.25625	yes							
+dataverse.harvard.edu	USA	North America	10.791	yes		https://github.com/orgs/IQSS/projects/2	https://api.github.com/projects/2606462	NA	http://dataverse.org	none	
+heidata.uni-heidelberg.de	Germany	Europe	10.11588	no				NA	not configured	https://data.uni-heidelberg.de/datenaufnahme.html	
+repositoriopesquisas.ibict.br	Brazil	South America	10.5072	no				NA	not configurable	none	
+dataverse.icrisat.org	India	Asia	10.21421	no				NA	not configured	none	
+dataverse.mpi-sws.org	NA	∅	10.5072	no				NA	http://guides.dataverse.org/en/4.8.5/user	none	
+research-data.ifsttar.fr	France	Europe	10.25578					NA		https://intranet.ifsttar.fr/activites-scientifiques/diffusion-des-savoirs-et-ouverture-a-la-societe/data-et-open-data/preserver-archiver/	
+datasets.socialhistory.org	Netherlands	Europe	␕	no				https://github.com/IISH/dataverse	not configurable	none	
+data.cipotato.org	Peru	South America	10.21223	no				NA		none	
+archive.data.jhu.edu	USA	North America	10.7281	yes				https://github.com/jhu-sheridan-libraries/dataverse	not configurable	none	
+dataverse.lib.virginia.edu	USA	North America	10.1813	yes		https://github.com/orgs/IQSS/projects/10	https://api.github.com/projects/2891843	NA	http://www.library.virginia.edu/libra/datasets/	http://uvalib.github.io/dataverse-docs/en/current/user/	https://dataverse.org/blog/uva-library-launches-%E2%80%9Clibra-data%E2%80%9D%E2%80%94university-virginia-dataverse-repository
+rin.lipi.go.id	Indonesia	Asia	10.5072	no				NA	not configurable	none	
+dataverse.acg.maine.edu	USA	North America	␕	no				NA	not configurable	none	
+data.mel.cgiar.org	Lebanon	Asia	␕	no							
+researchdata.nie.edu.sg	Singapore	Asia	10.2534	no				NA		https://libris.nie.edu.sg/NIE-Data-Repository	
+opendata.pku.edu.cn	China	Asia	10.1817	no				https://github.com/pengchengluo/dataverse	http://opendata.pku.edu.cn/about.xhtml	http://opendata.pku.edu.cn/handbook.xhtml	http://dataverse.org/blog/q-peking-university-dataverse
+datos.pucp.edu.pe	Peru	South America	␕	no							
+data.qdr.syr.edu	USA	North America	10.5064	yes		https://github.com/orgs/IQSS/projects/6	https://api.github.com/projects/2827684	https://github.com/QualitativeDataRepository/dataverse	https://qdr.syr.edu/about	https://qdr.syr.edu/deposit	https://dataverse.org/blog/qdr-dataverse
+dataverse.ufabc.edu.br	Brazil	South America	10.5072	no				∅	not configured	none	
+dataverse.ileel.ufu.br	Brazil	South America	∅	no				∅		none	
+research-data.urosario.edu.co	Columbia	South America	∅	no				∅			
+dataverse.scholarsportal.info	Canada	North America	10.5683	no		https://github.com/orgs/IQSS/projects/8	https://api.github.com/projects/2871949	https://github.com/scholarsportal/SP-dataverse	http://guides.scholarsportal.info/dataverse	https://dataverse.scholarsportal.info/#faq	
+dataverse.tdl.org	USA	North America	10.18738	yes				∅	http://data.tdl.org/about	https://texasdigitallibrary.atlassian.net/wiki/spaces/TDRUD/pages/287965260/User+Guide	
+dataverse.library.ualberta.ca	Canada	North America	10.7939	no				https://github.com/ualbertalib/dvn	not configurable	none	
+dataverse.ucla.edu	USA	North America	10.25346	yes				∅			
+dataverse.lib.unb.ca	Canada	North America	10.25545	no				∅	not configured	none	
+dataverse.unc.edu	USA	North America	10.15139	yes		https://github.com/orgs/IQSS/projects/5	https://api.github.com/projects/2804979	∅	not configured	https://odum.unc.edu/archive/managementcuration/	
+dataverse.unimi.it	Italy	Europe	10.1313	no				∅			
+dataverse.lib.umanitoba.ca	Canada	North America	10.5203	no				∅	not configured	none	
+dataverse.sta.uwi.edu	Jamaica	North America	∅	no				∅		none	
+dataverse.vtti.vt.edu	USA	North America	10.15787	no				∅		none	
