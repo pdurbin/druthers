@@ -1,12 +1,25 @@
 #!/usr/bin/env python3
 import csv
+import sys
+import os
+from pathlib import Path
+home = str(Path.home())
+#print(home)
+#myPath = home + os.sep + '.druthers'
+#print(myPath)
+sys.path.append(home + os.sep + '.druthers')
+import config
+#import urllib.request as urlrequest
 from urllib.request import Request, urlopen
 import json
-import os
 from urllib.parse import urlparse
 
 def main():
+    token = config.api_token
     tsv_file = 'boards.tsv'
+    #print(tsv_file)
+    #print(token)
+    #exit()
     final = {}
     bar = {}
     alldata = []
@@ -15,7 +28,6 @@ def main():
         reader = csv.DictReader(tsvfile, delimiter="\t")
         rows = [row for row in reader]
         for row in rows:
-            datarow = []
             #print(row)
             board = row['Board URL HTML']
             board_json = row['Board URL JSON']
@@ -28,10 +40,6 @@ def main():
             #if board:
             #    print(board)
             #    hostname = row['Installation hostname']
-            datarow.append('FIXME')
-            datarow.append(board)
-            datarow.append(hostname)
-            alldata.append(datarow)
             hostname_path = os.path.join(cache_dir, 'installations', hostname)
             if not os.path.exists(hostname_path):
                 os.makedirs(hostname_path)
@@ -61,13 +69,50 @@ def main():
             columns_out = '{}'
             req = Request(columns_url)
             req.add_header('Accept', 'application/vnd.github.inertia-preview+json')
-            token = ''
             req.add_header('Authorization', 'token ' + token)
             response = urlopen(req)
             columns_out = get_remote_json(response)
             columns = 'columns.json'
             with open(hostname_path + os.sep + columns, 'w') as outfile:
                 json.dump(columns_out, outfile, indent=4)
+            for col in columns_out:
+                cards_url = col['cards_url']
+                column_name = col['name']
+                print(cards_url)
+                print('fetching ' + cards_url)
+                req = Request(cards_url)
+                req.add_header('Accept', 'application/vnd.github.inertia-preview+json')
+                req.add_header('Authorization', 'token ' + token)
+                response = urlopen(req)
+                cards_out = get_remote_json(response)
+                print( ' cards found in column ' + column_name)
+                for card in cards_out:
+                    mycard = {}
+                    #print(json.dumps(card, indent=4))
+                    #content_url = card['content_url']
+                    card_url = card.get('url', None)
+                    #print(card_url)
+                    #datarow.append(card_url)
+                    content_url = card.get('content_url', None)
+                    #print(content_url)
+                    issue_url = None
+                    #datarow.append('issue42')
+                    #break
+                    if content_url:
+                        #print(content_url)
+                        #print(content_url)
+                        #print(content_url)
+                        issue_org = content_url.split('/')[4]
+                        issue_repo = content_url.split('/')[5]
+                        issue_number = content_url.split('/')[7]
+                        issue_url = 'https://github.com/' + issue_org + '/' + issue_repo + '/issues/' + issue_number
+                    if issue_url:
+                        datarow = []
+                        datarow.append(issue_url)
+                        datarow.append(hostname)
+                        datarow.append(board)
+                        datarow.append(column_name)
+                        alldata.append(datarow)
             #break
             #cards_out = '[]'
             #cards = 'cards.json'
@@ -75,9 +120,10 @@ def main():
             #    json.dump(cards_out, outfile, indent=4)
             ## FIXME: remove this break
 
+    #print(json.dumps(alldata, indent=4))
     outfile = open('votes.tsv','w')
     writer=csv.writer(outfile, delimiter='\t')
-    writer.writerow(['Issue URL', 'Board URL', 'Installation hostname'])
+    writer.writerow(['Issue URL', 'Installation hostname', 'Board URL', 'Collumn name'])
     #writer.writerows(list_of_rows)
     writer.writerows(alldata)
 
