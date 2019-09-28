@@ -38,4 +38,4 @@ for i in sorted_data:
         maybe_s = ''
     else:
         maybe_s = 's'
-    print i[1], type + maybe_s, "for issue", i[0]
+    print(i[1], type + maybe_s, "for issue", i[0])
